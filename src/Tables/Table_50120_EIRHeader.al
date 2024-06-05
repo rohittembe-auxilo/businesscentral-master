@@ -12,6 +12,10 @@ Table 50120 "EIR Header"
         field(3; "EIR Calculated"; Boolean)
         {
         }
+        field(4; Batch; Integer)
+        {
+
+        }
     }
 
     keys
