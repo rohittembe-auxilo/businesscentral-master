@@ -55,7 +55,7 @@ Table 50101 "ALM Lines"
             //This property is currently not supported
             //TestTableRelation = false;
             //The property 'ValidateTableRelation' can only be set if the property 'TableRelation' is set
-            //ValidateTableRelation = false;// //
+            //ValidateTableRelation = false;
 
             trigger OnLookup()
             begin

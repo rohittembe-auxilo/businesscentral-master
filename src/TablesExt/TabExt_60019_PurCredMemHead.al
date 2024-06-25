@@ -5,7 +5,7 @@ tableextension 60019 PurCredMemHead_ext extends "Purch. Cr. Memo Hdr."
         field(50001; "Shortcut Dimension 3"; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "Dimension Value".Code where("Global Dimension No."=const(3));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(3));
         }
         field(50011; MSME; Boolean)
         {
@@ -32,18 +32,18 @@ tableextension 60019 PurCredMemHead_ext extends "Purch. Cr. Memo Hdr."
         }
         field(50019; "GST Group Code"; Code[20])
         {
-        // CalcFormula = lookup("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
-        // Caption = 'GST Group Code';
-        // Description = 'CCIT//"GST Group"';
-        // Editable = false;
-        // FieldClass = FlowField;
+            // CalcFormula = lookup("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
+            // Caption = 'GST Group Code';
+            // Description = 'CCIT//"GST Group"';
+            // Editable = false;
+            // FieldClass = FlowField;
         }
         field(50020; "GST Reverse Charge"; Boolean)
         {
-        // CalcFormula = lookup("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
-        // Description = 'CCIT';
-        // Editable = false;
-        // FieldClass = FlowField;
+            // CalcFormula = lookup("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
+            // Description = 'CCIT';
+            // Editable = false;
+            // FieldClass = FlowField;
         }
         field(50021; "Bank Account Name"; Text[50])
         {
@@ -88,21 +88,32 @@ tableextension 60019 PurCredMemHead_ext extends "Purch. Cr. Memo Hdr."
         field(50027; "MSME Type"; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = " ", A, B, C, D, E, F;
+            OptionMembers = " ",A,B,C,D,E,F;
         }
         field(50030; "PO Type"; Option)
         {
             DataClassification = ToBeClassified;
             Description = 'CCIT AN';
             OptionCaption = ' ,Opex,Capex';
-            OptionMembers = " ", Opex, Capex;
+            OptionMembers = " ",Opex,Capex;
         }
         field(50031; "PO Sub Type"; Option)
         {
             DataClassification = ToBeClassified;
             Description = 'CCIT AN';
             OptionCaption = ' ,Fixed,Variable,Semi - Variable';
-            OptionMembers = " ", "Fixed", Variable, "Semi - Variable";
+            OptionMembers = " ","Fixed",Variable,"Semi - Variable";
         }
+        field(50032; Attachments; Boolean)
+        {
+
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = exist("Document Attachment" where(
+                                                            "Table ID" = const(124), "No." = field("No.")));
+
+
+        }
+
     }
 }

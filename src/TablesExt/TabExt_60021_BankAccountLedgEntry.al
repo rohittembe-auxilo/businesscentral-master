@@ -48,6 +48,17 @@ tableextension 60021 BankAccountLedgEntry_ext extends "Bank Account Ledger Entry
             DataClassification = ToBeClassified;
             Description = 'CCIT AN';
         }
+        field(50027; Attachments; Boolean)
+        {
+
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = exist("Document Attachment" where(
+                                                            "Table ID" = const(271), "No." = field("Document No.")));
+
+
+        }
+
         field(60000; "RTGS Entry Exist"; Boolean)
         {
             DataClassification = ToBeClassified;

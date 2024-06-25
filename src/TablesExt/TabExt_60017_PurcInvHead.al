@@ -5,7 +5,7 @@ tableextension 60017 PurcInvHead_ext extends "Purch. Inv. Header"
         field(50001; "Shortcut Dimension 3"; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "Dimension Value".Code where("Global Dimension No."=const(3));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(3));
         }
         field(50002; "Created By"; Code[30])
         {
@@ -29,13 +29,13 @@ tableextension 60017 PurcInvHead_ext extends "Purch. Inv. Header"
         }
         field(50013; "TDS Amount"; Decimal)
         {
-        // CalcFormula = sum("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
-        // FieldClass = FlowField;
+            // CalcFormula = sum("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
+            // FieldClass = FlowField;
         }
         field(50014; "GST Amount"; Decimal)
         {
-        // CalcFormula = sum("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
-        // FieldClass = FlowField;
+            // CalcFormula = sum("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
+            // FieldClass = FlowField;
         }
         field(50015; PHComment; Text[250])
         {
@@ -58,18 +58,18 @@ tableextension 60017 PurcInvHead_ext extends "Purch. Inv. Header"
         }
         field(50019; "GST Group Code"; Code[20])
         {
-        // CalcFormula = lookup("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
-        // Caption = 'GST Group Code';
-        // Description = 'CCIT//"GST Group"';
-        // Editable = false;
-        // FieldClass = FlowField;
+            // CalcFormula = lookup("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
+            // Caption = 'GST Group Code';
+            // Description = 'CCIT//"GST Group"';
+            // Editable = false;
+            // FieldClass = FlowField;
         }
         field(50020; "GST Reverse Charge"; Boolean)
         {
-        // CalcFormula = lookup("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
-        // Description = 'CCIT';
-        // Editable = false;
-        // FieldClass = FlowField;
+            // CalcFormula = lookup("Purch. Inv. Line".Field20919332 where ("Document No."=field("No.")));
+            // Description = 'CCIT';
+            // Editable = false;
+            // FieldClass = FlowField;
         }
         field(50021; "Bank Account Name"; Text[50])
         {
@@ -114,7 +114,7 @@ tableextension 60017 PurcInvHead_ext extends "Purch. Inv. Header"
         field(50027; "MSME Type"; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = " ", A, B, C, D, E, F;
+            OptionMembers = " ",A,B,C,D,E,F;
         }
         field(50028; "Purch. Order No."; Code[35])
         {
@@ -125,14 +125,24 @@ tableextension 60017 PurcInvHead_ext extends "Purch. Inv. Header"
             DataClassification = ToBeClassified;
             Description = 'CCIT AN';
             OptionCaption = ' ,Opex,Capex';
-            OptionMembers = " ", Opex, Capex;
+            OptionMembers = " ",Opex,Capex;
         }
         field(50031; "PO Sub Type"; Option)
         {
             DataClassification = ToBeClassified;
             Description = 'CCIT AN';
             OptionCaption = ' ,Fixed,Variable,Semi - Variable';
-            OptionMembers = " ", "Fixed", Variable, "Semi - Variable";
+            OptionMembers = " ","Fixed",Variable,"Semi - Variable";
+        }
+        field(50032; Attachments; Boolean)
+        {
+
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = exist("Document Attachment" where(
+                                                            "Table ID" = const(122), "No." = field("No.")));
+
+
         }
     }
 }

@@ -2,6 +2,7 @@ tableextension 60005 vend_ext extends Vendor
 {
     fields
     {
+
         field(50000; "GRN Qty"; Boolean)
         {
             DataClassification = ToBeClassified;
@@ -93,6 +94,33 @@ tableextension 60005 vend_ext extends Vendor
         {
             Caption = 'Address 3';
             DataClassification = ToBeClassified;
+        }
+        field(60003; Attachments; Boolean)
+        {
+
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = exist("Document Attachment" where(
+                                                            "Table ID" = const(23), "No." = field("No.")));
+
+
+        }
+        modify("Preferred Bank Account Code")
+        {
+            trigger OnBeforeValidate()
+            var
+                VendBankAccount: Record "Vendor Bank Account";
+            begin
+                VendBankAccount.reset();
+                VendBankAccount.SetRange("Vendor No.", Rec."No.");
+                VendBankAccount.SetRange(Code, "Preferred Bank Account Code");
+                if VendBankAccount.find('-') then begin
+                    if VendBankAccount.Blocked = true then
+                        Error('Bank Account is blocked.');
+
+                    "E-Mail" := VendBankAccount."E-Mail";
+                End;
+            end;
         }
         modify("Location Code")
         {

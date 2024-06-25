@@ -57,5 +57,16 @@ tableextension 60015 SalesCrMemHEad_ext extends "Sales Cr.Memo Header"
                 //ValidateShortcutDimCode(3,"Shortcut Dimension 3");
             end;
         }
+        field(50009; Attachments; Boolean)
+        {
+
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = exist("Document Attachment" where(
+                                                            "Table ID" = const(114), "No." = field("No.")));
+
+
+        }
+
     }
 }

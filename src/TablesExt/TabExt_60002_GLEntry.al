@@ -137,6 +137,16 @@ tableextension 60002 GLEntry_ext extends "G/L Entry"
             DataClassification = ToBeClassified;
             Description = 'CCIT AN';
         }
+        field(50033; Attachments; Boolean)
+        {
+
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = exist("Document Attachment" where(
+                                                            "Table ID" = const(17), "No." = field("Document No.")));
+
+
+        }
 
     }
 }

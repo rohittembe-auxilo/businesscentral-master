@@ -62,6 +62,11 @@ tableextension 60022 VendBankAcc_ext extends "Vendor Bank Account"
             DataClassification = ToBeClassified;
 
         }
+        field(50007; "Blocked"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+
+        }
         modify(Name)
         {
             trigger OnBeforeValidate()

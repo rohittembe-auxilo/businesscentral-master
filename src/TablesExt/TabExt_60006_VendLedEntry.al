@@ -36,7 +36,7 @@ tableextension 60006 VendLedEntry_ext extends "Vendor Ledger Entry"
         field(50019; "MSME Type"; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = " ", A, B, C, D, E, F;
+            OptionMembers = " ",A,B,C,D,E,F;
         }
         field(50020; "Purch. Order No."; Code[35])
         {
@@ -88,14 +88,25 @@ tableextension 60006 VendLedEntry_ext extends "Vendor Ledger Entry"
             DataClassification = ToBeClassified;
             Description = 'CCIT AN';
             OptionCaption = ' ,Opex,Capex';
-            OptionMembers = " ", Opex, Capex;
+            OptionMembers = " ",Opex,Capex;
         }
         field(50031; "PO Sub Type"; Option)
         {
             DataClassification = ToBeClassified;
             Description = 'CCIT AN';
             OptionCaption = ' ,Fixed,Variable,Semi - Variable';
-            OptionMembers = " ", "Fixed", Variable, "Semi - Variable";
+            OptionMembers = " ","Fixed",Variable,"Semi - Variable";
         }
+        field(50032; Attachments; Boolean)
+        {
+
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = exist("Document Attachment" where(
+                                                            "Table ID" = const(25), "No." = field("Document No.")));
+
+
+        }
+
     }
 }

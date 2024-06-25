@@ -75,5 +75,15 @@ tableextension 60014 SalesInvHead_ext extends "Sales Invoice Header"
                 //ValidateShortcutDimCode(3,"Shortcut Dimension 3");
             end;
         }
+        field(50009; Attachments; Boolean)
+        {
+
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = exist("Document Attachment" where(
+                                                            "Table ID" = const(112), "No." = field("No.")));
+
+
+        }
     }
 }

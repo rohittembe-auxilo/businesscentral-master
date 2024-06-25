@@ -13,6 +13,16 @@ tableextension 60031 DVLE extends "Detailed Vendor Ledg. Entry"
             DataClassification = ToBeClassified;
             OptionMembers = ,Fixed,Variable,"Semi - Variable";
         }
+        field(50002; Attachments; Boolean)
+        {
+
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = exist("Document Attachment" where(
+                                                            "Table ID" = const(380), "No." = field("Document No.")));
+
+
+        }
     }
 
     keys

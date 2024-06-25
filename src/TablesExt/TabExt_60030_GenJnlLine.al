@@ -103,6 +103,27 @@ tableextension 60030 GenjnlLine extends "Gen. Journal Line"
             end;
 
         }
+        modify("Recipient Bank Account")
+        {
+            trigger OnAfterValidate()
+            var
+                myInt: Integer;
+                VenBankAcc: Record "Vendor Bank Account";
+            begin
+                //CCIT AN 14022023
+                VenBankAcc.RESET();
+                VenBankAcc.SETRANGE(Code, "Recipient Bank Account");
+                VenBankAcc.SETRANGE("Vendor No.", "Account No.");
+                IF VenBankAcc.FIND('-') THEN BEGIN
+                    "Bank Account Code" := VenBankAcc.Code;
+                    "Bank Account No." := VenBankAcc."Bank Account No.";
+                    "Bank Account Name" := VenBankAcc.Name;
+                    "Bank Account IFSC" := VenBankAcc.IFSC;
+                    "Bank Account E-Mail" := VenBankAcc."E-Mail";
+                END;
+                //CCIT AN 14022023
+            end;
+        }
 
     }
 
