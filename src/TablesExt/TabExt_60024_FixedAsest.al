@@ -12,9 +12,26 @@ tableextension 60024 FixedAsest_ext extends "Fixed Asset"
                 //ValidateShortcutDimCode(3,"Shortcut Dimension 3");
             end;
         }
+
         field(50001; "Asset Tag no."; Code[35])
         {
             DataClassification = ToBeClassified;
+        }
+        field(50002; "Shortcut Dimension 3 Code"; Code[20])
+        {
+
+            CaptionClass = '1,2,3';
+            Caption = 'Shortcut Dimension 3 Code';
+            DataClassification = ToBeClassified;
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(3),
+                                                          Blocked = CONST(false),
+                                                          "Dimension Value Type" = CONST(Standard));
+
+            trigger OnValidate()
+            begin
+                // added code to vlidate dimesnion set id
+                ValidateShortcutDimCode(3, "Shortcut Dimension 3 Code");
+            end;
         }
     }
 }
