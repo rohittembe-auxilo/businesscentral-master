@@ -103,7 +103,7 @@ tableextension 60006 VendLedEntry_ext extends "Vendor Ledger Entry"
             Editable = false;
             FieldClass = FlowField;
             CalcFormula = exist("Document Attachment" where(
-                                                            "Table ID" = const(25), "No." = field("Document No.")));
+                                                            "Table ID" = const(122), "No." = field("Document No.")));
 
 
         }

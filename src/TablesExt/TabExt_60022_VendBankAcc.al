@@ -67,6 +67,12 @@ tableextension 60022 VendBankAcc_ext extends "Vendor Bank Account"
             DataClassification = ToBeClassified;
 
         }
+        field(50008; "E-Mail 2"; Text[180])
+        {
+            Caption = 'E-Mail';
+            DataClassification = ToBeClassified;
+            ExtendedDatatype = EMail;
+        }
         modify(Name)
         {
             trigger OnBeforeValidate()

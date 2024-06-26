@@ -17,7 +17,7 @@ tableextension 60004 CustLedEntry_ext extends "Cust. Ledger Entry"
             Editable = false;
             FieldClass = FlowField;
             CalcFormula = exist("Document Attachment" where(
-                                                            "Table ID" = const(21), "No." = field("Document No.")));
+                                                            "Table ID" = const(112), "No." = field("Document No.")));
 
 
         }

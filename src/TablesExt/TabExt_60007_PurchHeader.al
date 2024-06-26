@@ -42,56 +42,96 @@ tableextension 60007 PurchHeader_ext extends "Purchase Header"
 
         field(50005; "Shortcut Dimension 8 Code"; Code[20])
         {
+
+            CaptionClass = '1,2,8';
+            Caption = 'Shortcut Dimension 8 Code';
             DataClassification = ToBeClassified;
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(8),
+                                                          Blocked = CONST(false),
+                                                          "Dimension Value Type" = CONST(Standard));
 
             trigger OnValidate()
             begin
-                // ValidateShortcutDimCode(7,"Shortcut Dimension 7 Code");
+                // added code to vlidate dimesnion set id
+                ValidateShortcutDimCode(8, "Shortcut Dimension 8 Code");
             end;
         }
         field(50006; "Shortcut Dimension 3 Code"; Code[20])
         {
+
+            CaptionClass = '1,2,3';
+            Caption = 'Shortcut Dimension 3 Code';
             DataClassification = ToBeClassified;
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(3),
+                                                          Blocked = CONST(false),
+                                                          "Dimension Value Type" = CONST(Standard));
 
             trigger OnValidate()
             begin
-                // ValidateShortcutDimCode(7,"Shortcut Dimension 7 Code");
+                // added code to vlidate dimesnion set id
+                ValidateShortcutDimCode(3, "Shortcut Dimension 3 Code");
             end;
         }
         field(50007; "Shortcut Dimension 4 Code"; Code[20])
         {
+            CaptionClass = '1,2,4';
+            Caption = 'Shortcut Dimension 4 Code';
             DataClassification = ToBeClassified;
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(4),
+                                                          Blocked = CONST(false),
+                                                          "Dimension Value Type" = CONST(Standard));
 
             trigger OnValidate()
             begin
-                // ValidateShortcutDimCode(7,"Shortcut Dimension 7 Code");
+                // added code to vlidate dimesnion set id
+                ValidateShortcutDimCode(4, "Shortcut Dimension 4 Code");
             end;
         }
         field(50008; "Shortcut Dimension 5 Code"; Code[20])
         {
+            CaptionClass = '1,2,5';
+            Caption = 'Shortcut Dimension 5 Code';
             DataClassification = ToBeClassified;
+
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(5),
+                                                          Blocked = CONST(false),
+                                                          "Dimension Value Type" = CONST(Standard));
 
             trigger OnValidate()
             begin
-                // ValidateShortcutDimCode(7,"Shortcut Dimension 7 Code");
+                // added code to vlidate dimesnion set id
+                ValidateShortcutDimCode(5, "Shortcut Dimension 5 Code");
             end;
         }
         field(50009; "Shortcut Dimension 6 Code"; Code[20])
         {
+            CaptionClass = '1,2,6';
+            Caption = 'Shortcut Dimension 6 Code';
             DataClassification = ToBeClassified;
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(6),
+                                                          Blocked = CONST(false),
+                                                          "Dimension Value Type" = CONST(Standard));
 
             trigger OnValidate()
             begin
-                // ValidateShortcutDimCode(7,"Shortcut Dimension 7 Code");
+                // added code to vlidate dimesnion set id
+                ValidateShortcutDimCode(6, "Shortcut Dimension 6 Code");
             end;
         }
         field(50010; "Shortcut Dimension 7 Code"; Code[20])
         {
+            CaptionClass = '1,2,7';
+            Caption = 'Shortcut Dimension 7 Code';
             DataClassification = ToBeClassified;
+
+            TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(7),
+                                                          Blocked = CONST(false),
+                                                          "Dimension Value Type" = CONST(Standard));
 
             trigger OnValidate()
             begin
-                // ValidateShortcutDimCode(7,"Shortcut Dimension 7 Code");
+                // added code to vlidate dimesnion set id
+                ValidateShortcutDimCode(7, "Shortcut Dimension 7 Code");
             end;
         }
         field(50011; MSME; Boolean)
@@ -274,11 +314,48 @@ tableextension 60007 PurchHeader_ext extends "Purchase Header"
 
             end;
         }
+        modify("Dimension Set ID")
+        {
+            trigger OnAfterValidate()
+            var
+                myInt: Integer;
+                DimSetentry: Record "Dimension Set Entry";
+
+            begin
+                DimSetentry.reset();
+                DimSetentry.SetRange("Dimension Set ID", rec."Dimension Set ID");
+                if DimSetentry.Find('-') then
+                    repeat
+                        if DimSetentry."Global Dimension No." = 3 then begin
+                            rec.Validate("Shortcut Dimension 3 Code", DimSetentry."Dimension Code")
+                        end;
+                        if DimSetentry."Global Dimension No." = 4 then begin
+                            rec.Validate("Shortcut Dimension 4 Code", DimSetentry."Dimension Code")
+                        end;
+                        if DimSetentry."Global Dimension No." = 5 then begin
+                            rec.Validate("Shortcut Dimension 5 Code", DimSetentry."Dimension Code")
+                        end;
+                        if DimSetentry."Global Dimension No." = 6 then begin
+                            rec.Validate("Shortcut Dimension 6 Code", DimSetentry."Dimension Code")
+                        end;
+                        if DimSetentry."Global Dimension No." = 7 then begin
+                            rec.Validate("Shortcut Dimension 7 Code", DimSetentry."Dimension Code")
+                        end;
+                        if DimSetentry."Global Dimension No." = 8 then begin
+                            rec.Validate("Shortcut Dimension 8 Code", DimSetentry."Dimension Code")
+                        end;
+                    until DimSetentry.next = 0;
+
+            end;
+        }
 
     }
     trigger OnAfterInsert()
     var
         myInt: Integer;
+        DimSetEnt: Record "Dimension Set Entry";
+        DimSetEntPages: Record "Dimension Set Entry";
+
     begin
         "Created By" := USERID;
     end;

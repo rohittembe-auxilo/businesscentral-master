@@ -80,7 +80,7 @@ tableextension 60005 vend_ext extends Vendor
                 // IncomingDocument.SetVendorDoc(Rec);
             end;
         }
-        field(60000; "E-Mail 2"; Text[80])
+        field(60000; "E-Mail 2"; Text[180])
         {
             Caption = 'E-Mail';
             DataClassification = ToBeClassified;
