@@ -258,6 +258,12 @@ tableextension 60007 PurchHeader_ext extends "Purchase Header"
             OptionCaption = ' ,Fixed,Variable,Semi - Variable';
             OptionMembers = " ","Fixed",Variable,"Semi - Variable";
         }
+        field(50033; "E-Mail 2"; Text[180])
+        {
+            Caption = 'E-Mail';
+            DataClassification = ToBeClassified;
+            ExtendedDatatype = EMail;
+        }
         modify("Location Code")
         {
             trigger OnBeforeValidate()

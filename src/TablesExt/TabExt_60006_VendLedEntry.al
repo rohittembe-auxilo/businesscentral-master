@@ -107,6 +107,12 @@ tableextension 60006 VendLedEntry_ext extends "Vendor Ledger Entry"
 
 
         }
+        field(50033; "E-Mail 2"; Text[180])
+        {
+            Caption = 'E-Mail';
+            DataClassification = ToBeClassified;
+            ExtendedDatatype = EMail;
+        }
 
     }
 }

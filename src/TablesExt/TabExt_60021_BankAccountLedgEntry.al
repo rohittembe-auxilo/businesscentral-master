@@ -58,6 +58,12 @@ tableextension 60021 BankAccountLedgEntry_ext extends "Bank Account Ledger Entry
 
 
         }
+        field(50028; "E-Mail 2"; Text[180])
+        {
+            Caption = 'E-Mail';
+            DataClassification = ToBeClassified;
+            ExtendedDatatype = EMail;
+        }
 
         field(60000; "RTGS Entry Exist"; Boolean)
         {

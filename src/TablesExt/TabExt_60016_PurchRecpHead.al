@@ -5,7 +5,7 @@ tableextension 60016 PurchRecpHead_ext extends "Purch. Rcpt. Header"
         field(50001; "Shortcut Dimension 3"; Code[20])
         {
             DataClassification = ToBeClassified;
-            TableRelation = "Dimension Value".Code where("Global Dimension No."=const(3));
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(3));
         }
         field(50002; "Created By"; Code[30])
         {
@@ -45,7 +45,7 @@ tableextension 60016 PurchRecpHead_ext extends "Purch. Rcpt. Header"
         field(50027; "MSME Type"; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = " ", A, B, C, D, E, F;
+            OptionMembers = " ",A,B,C,D,E,F;
         }
         field(50028; "Purch. Order No."; Code[35])
         {
@@ -57,14 +57,20 @@ tableextension 60016 PurchRecpHead_ext extends "Purch. Rcpt. Header"
             DataClassification = ToBeClassified;
             Description = 'CCIT AN';
             OptionCaption = ' ,Opex,Capex';
-            OptionMembers = " ", Opex, Capex;
+            OptionMembers = " ",Opex,Capex;
         }
         field(50031; "PO Sub Type"; Option)
         {
             DataClassification = ToBeClassified;
             Description = 'CCIT AN';
             OptionCaption = ' ,Fixed,Variable,Semi - Variable';
-            OptionMembers = " ", "Fixed", Variable, "Semi - Variable";
+            OptionMembers = " ","Fixed",Variable,"Semi - Variable";
+        }
+        field(50033; "E-Mail 2"; Text[180])
+        {
+            Caption = 'E-Mail';
+            DataClassification = ToBeClassified;
+            ExtendedDatatype = EMail;
         }
     }
 }

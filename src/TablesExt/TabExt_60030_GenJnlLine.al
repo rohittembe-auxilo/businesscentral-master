@@ -91,6 +91,12 @@ tableextension 60030 GenjnlLine extends "Gen. Journal Line"
             DataClassification = ToBeClassified;
 
         }
+        field(50021; "E-Mail 2"; Text[180])
+        {
+
+            DataClassification = ToBeClassified;
+
+        }
         modify("Location Code")
         {
             trigger OnBeforeValidate()
