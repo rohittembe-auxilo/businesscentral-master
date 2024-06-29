@@ -13,6 +13,9 @@ tableextension 60042 TDSEntryExt extends "TDS Entry"
             FieldClass = FlowField;
             CalcFormula = lookup(Party.Name where(Code = field("Party Code")));
             Editable = false;
+
+
+
         }
     }
 
