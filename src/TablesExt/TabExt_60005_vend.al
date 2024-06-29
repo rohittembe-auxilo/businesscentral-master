@@ -228,6 +228,25 @@ tableextension 60005 vend_ext extends Vendor
             end;
 
         }
+        modify("GST Registration No.")
+        {
+
+            trigger OnBeforeValidate()
+            var
+                Vendor: Record Vendor;
+                DuplicateGSTNoErr: Label 'Entered GST No. is already assigned to vendorr %1';
+            begin
+                if "GST Registration No." <> '' then begin
+                    Vendor.Reset();
+                    Vendor.Setrange("GST Registration No.", "GST Registration No.");
+                    If Vendor.findset() then
+                        repeat
+                            if Vendor."No." <> "No." then
+                                Error(StrSubstNo(DuplicateGSTNoErr, Vendor."No."));
+                        until Vendor.next() = 0;
+                end;
+            end;
+        }
     }
     trigger OnModify()
     begin

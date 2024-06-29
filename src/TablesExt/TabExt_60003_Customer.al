@@ -123,6 +123,15 @@ tableextension 60003 Cust_ext extends Customer
                 ValidateShortcutDimCode(8, "Shortcut Dimension 8 Code");
             end;
         }
+        field(50010; "Reason for Block"; Text[50])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50011; "Related party transaction"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
+
         modify("Location Code")
         {
 
@@ -135,6 +144,26 @@ tableextension 60003 Cust_ext extends Customer
                     Error('Location is blocked.');
             end;
 
+        }
+
+        modify("GST Registration No.")
+        {
+
+            trigger OnBeforeValidate()
+            var
+                Customer: Record Customer;
+                DuplicateGSTNoErr: Label 'Entered GST No. is already assigned to customer %1';
+            begin
+                if "GST Registration No." <> '' then begin
+                    Customer.Reset();
+                    Customer.Setrange("GST Registration No.", "GST Registration No.");
+                    If Customer.findset() then
+                        repeat
+                            if Customer."No." <> "No." then
+                                Error(StrSubstNo(DuplicateGSTNoErr, Customer."No."));
+                        until Customer.next() = 0;
+                end;
+            end;
         }
     }
     trigger OnModify()

@@ -2,11 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Microsoft cloud sandbox Auxilo_DEV",
+            "name": "Microsoft cloud sandbox Auxilo_Development",
             "request": "launch",
             "type": "al",
             "environmentType": "Sandbox",
-            "environmentName": "Auxilo_DEV",
+            "environmentName": "Auxilo_Development",
             "startupObjectId": 9308,
             "startupObjectType": "Page",
             "breakOnError": "All",
@@ -32,11 +32,11 @@
             "tenant": "31ac2114-d5fc-44b4-b230-615ba4c0425a"
         },
         {
-            "name": "AL: Debug Specific Session (Auxilo_DEV)",
+            "name": "AL: Debug Specific Session (Auxilo_Development)",
             "request": "attach",
             "type": "al",
             "environmentType": "Sandbox",
-            "environmentName": "Auxilo_DEV",
+            "environmentName": "Auxilo_Development",
             "sessionId": 38268,
             "breakOnNext": "WebClient",
             "breakOnError": "ExcludeTry",
