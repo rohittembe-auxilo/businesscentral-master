@@ -27,5 +27,10 @@ tableextension 60039 PurchSetupExtn extends "Purchases & Payables Setup"
             Caption = 'SFTP Path';
             DataClassification = ToBeClassified;
         }
+        field(60006; "FTP URL"; Text[250])
+        {
+            Caption = 'FTP URL';
+            DataClassification = ToBeClassified;
+        }
     }
 }
