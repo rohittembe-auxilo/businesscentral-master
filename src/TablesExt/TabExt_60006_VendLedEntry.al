@@ -71,7 +71,7 @@ tableextension 60006 VendLedEntry_ext extends "Vendor Ledger Entry"
             DataClassification = ToBeClassified;
             Description = '"IFSC Masters" WHERE (Blocked=CONST(No))//CCIT AN';
         }
-        field(50025; "Bank Account E-Mail"; Text[150])
+        field(50025; "Bank Account E-Mail"; Text[250])
         {
             Caption = 'E-Mail';
             DataClassification = ToBeClassified;

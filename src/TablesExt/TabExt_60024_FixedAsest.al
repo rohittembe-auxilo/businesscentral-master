@@ -33,5 +33,13 @@ tableextension 60024 FixedAsest_ext extends "Fixed Asset"
                 ValidateShortcutDimCode(3, "Shortcut Dimension 3 Code");
             end;
         }
+        field(50003; Status; Option)
+        {
+            Caption = 'Status';
+            DataClassification = ToBeClassified;
+            Editable = false;
+            OptionCaption = 'Pending Approval,Approved';
+            OptionMembers = "Pending Approval",Approved;
+        }
     }
 }

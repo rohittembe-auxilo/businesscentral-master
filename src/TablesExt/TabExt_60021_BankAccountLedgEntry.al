@@ -36,7 +36,7 @@ tableextension 60021 BankAccountLedgEntry_ext extends "Bank Account Ledger Entry
             Description = '"IFSC Masters" WHERE (Blocked=CONST(No))//Lookup("Vendor Ledger Entry".Field8604520 WHERE (Document No.=FIELD(Document No.)))';
             Editable = false;
         }
-        field(50025; "Bank Account E-Mail"; Text[150])
+        field(50025; "Bank Account E-Mail"; Text[250])
         {
             Caption = 'E-Mail';
             Description = 'CCIT AN//Lookup("Vendor Ledger Entry".Field8604520 WHERE (Document No.=FIELD(Document No.)))';

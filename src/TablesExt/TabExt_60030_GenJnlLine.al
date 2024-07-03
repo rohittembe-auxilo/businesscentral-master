@@ -64,7 +64,7 @@ tableextension 60030 GenjnlLine extends "Gen. Journal Line"
         {
             DataClassification = ToBeClassified;
         }
-        field(50015; "Bank Account E-Mail"; Text[150])
+        field(50015; "Bank Account E-Mail"; Text[250])
         {
             DataClassification = ToBeClassified;
         }
@@ -125,7 +125,7 @@ tableextension 60030 GenjnlLine extends "Gen. Journal Line"
                     "Bank Account No." := VenBankAcc."Bank Account No.";
                     "Bank Account Name" := VenBankAcc.Name;
                     "Bank Account IFSC" := VenBankAcc.IFSC;
-                    "Bank Account E-Mail" := VenBankAcc."E-Mail";
+                    "Bank Account E-Mail" := VenBankAcc."E-Mail" + ',' + VenBankAcc."E-Mail 2";
                 END;
                 //CCIT AN 14022023
             end;
