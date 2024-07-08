@@ -15,7 +15,9 @@ tableextension 60001 GlAccount_ext extends "G/L Account"
         field(50001; TDS; Code[20])
         {
             DataClassification = ToBeClassified;
-            Description = '"TDS Nature of Deduction"';
+            Description = 'TDS Section';
+            Caption = 'TDS Section';
+            TableRelation = "TDS Section";
         }
         field(50002; "Creation Date"; Date)
         {

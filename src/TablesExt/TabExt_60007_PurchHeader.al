@@ -333,22 +333,22 @@ tableextension 60007 PurchHeader_ext extends "Purchase Header"
                 if DimSetentry.Find('-') then
                     repeat
                         if DimSetentry."Global Dimension No." = 3 then begin
-                            rec.Validate("Shortcut Dimension 3 Code", DimSetentry."Dimension Code")
+                            rec.Validate("Shortcut Dimension 3 Code", DimSetentry."Dimension Value Code")
                         end;
                         if DimSetentry."Global Dimension No." = 4 then begin
-                            rec.Validate("Shortcut Dimension 4 Code", DimSetentry."Dimension Code")
+                            rec.Validate("Shortcut Dimension 4 Code", DimSetentry."Dimension Value Code")
                         end;
                         if DimSetentry."Global Dimension No." = 5 then begin
-                            rec.Validate("Shortcut Dimension 5 Code", DimSetentry."Dimension Code")
+                            rec.Validate("Shortcut Dimension 5 Code", DimSetentry."Dimension Value Code")
                         end;
                         if DimSetentry."Global Dimension No." = 6 then begin
-                            rec.Validate("Shortcut Dimension 6 Code", DimSetentry."Dimension Code")
+                            rec.Validate("Shortcut Dimension 6 Code", DimSetentry."Dimension Value Code")
                         end;
                         if DimSetentry."Global Dimension No." = 7 then begin
-                            rec.Validate("Shortcut Dimension 7 Code", DimSetentry."Dimension Code")
+                            rec.Validate("Shortcut Dimension 7 Code", DimSetentry."Dimension Value Code")
                         end;
                         if DimSetentry."Global Dimension No." = 8 then begin
-                            rec.Validate("Shortcut Dimension 8 Code", DimSetentry."Dimension Code")
+                            rec.Validate("Shortcut Dimension 8 Code", DimSetentry."Dimension Value Code")
                         end;
                     until DimSetentry.next = 0;
 
