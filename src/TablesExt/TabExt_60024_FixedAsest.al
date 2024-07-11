@@ -33,13 +33,17 @@ tableextension 60024 FixedAsest_ext extends "Fixed Asset"
                 ValidateShortcutDimCode(3, "Shortcut Dimension 3 Code");
             end;
         }
-        field(50003; Status; Option)
+        field(50003; Status; Enum CustomApprovalEnum)
         {
             Caption = 'Status';
             DataClassification = ToBeClassified;
             Editable = false;
-            OptionCaption = 'Pending Approval,Approved';
-            OptionMembers = "Pending Approval",Approved;
         }
     }
+
+    trigger OnInsert()
+    begin
+        Status := Status::"Pending for Approval";
+        Blocked := true;
+    end;
 }

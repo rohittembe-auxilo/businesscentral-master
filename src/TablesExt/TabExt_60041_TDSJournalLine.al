@@ -2,8 +2,12 @@ tableextension 60041 TDSJournalLine extends "TDS Journal Line"
 {
     fields
     {
-        // Add changes to table fields here
-
+        field(50003; Status; Enum CustomApprovalEnum)
+        {
+            Caption = 'Status';
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
     }
 
     keys

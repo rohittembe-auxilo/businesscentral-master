@@ -264,6 +264,30 @@ tableextension 60007 PurchHeader_ext extends "Purchase Header"
             DataClassification = ToBeClassified;
             ExtendedDatatype = EMail;
         }
+        field(50034; "TnC1"; Text[500])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50035; "TnC2"; Text[500])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50036; "TnC3"; Text[500])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50037; "TnC4"; Text[500])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50038; "TnC5"; Text[500])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50039; "TnC6"; Text[500])
+        {
+            DataClassification = ToBeClassified;
+        }
         modify("Location Code")
         {
             trigger OnBeforeValidate()
